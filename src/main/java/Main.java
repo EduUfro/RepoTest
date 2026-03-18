@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
+        Item pocion = new Item("Potion","cura 50", 2);
         Pokemon pikachu = new Pokemon("Pikachu", "Eléctrico", 5, 100, 20, 10);
         Pokemon charmander = new Pokemon("Charmander", "Fuego", 5, 100, 18, 8);
 
@@ -20,14 +21,20 @@ public class Main {
         while (!pikachu.estaDebilitado() && !charmander.estaDebilitado()) {
             System.out.println(">> Ronda " + ronda);
 
-            pikachu.atacar(charmander);
+            if (pikachu.getVidaActual()<50&&pocion.getCantidad()>1){
+                pocion.usar(pikachu);
+            }
+            else {
+                pikachu.atacar(charmander);
+            }
             
             if (charmander.estaDebilitado()) {
                 System.out.println(charmander.getNombre() + " se ha debilitado.");
                 break; 
             }
+
             charmander.atacar(pikachu);
-            
+
             if (pikachu.estaDebilitado()) {
                 System.out.println(pikachu.getNombre() + " se ha debilitado.");
                 break;

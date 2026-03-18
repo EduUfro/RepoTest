@@ -97,4 +97,8 @@ public class Pokemon {
     public int getNivel() {
         return nivel;
     }
+
+    public int getVidaMaxima() {
+        return vidaMaxima;
+    }
 }
